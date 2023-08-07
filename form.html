@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Prediction Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 30px;
+            font-size: 16px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #336699;
+        }
+
+        form {
+            width: 45%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            line-height: 1;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            width: 300px;
+            color: #666;
+        }
+
+        input[type="text"],
+        select {
+            padding: 8px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 2px;
+            color: #333;
+        }
+
+        input[type="date"] {
+            padding: 8px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 2px;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #336699;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #204c77;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 6px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #eaf2f8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter the Loan Details</h1>
+    <form action="/predict" method="post">
+        <table>
+            <tr>
+                <td><label for="CreditScore">Credit Score:</label></td>
+                <td><input type="text" id="CreditScore" name="CreditScore" required></td>
+            </tr>
+            <tr>
+                <td><label for="FirstTimeHomebuyer">First Time Homebuyer:</label></td>
+                <td>
+                    <select id="FirstTimeHomebuyer" name="FirstTimeHomebuyer" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </td>
+            </tr>
+	    <tr>
+                <td><label for="FirstPaymentDate">First Payment Date:</label></td>
+                <td><input type="date" id="FirstPaymentDate" name="FirstPaymentDate" required></td>
+            </tr>
+            <tr>
+                <td><label for="MaturityDate">Maturity Date:</label></td>
+                <td><input type="date" id="MaturityDate" name="MaturityDate" required></td>
+            </tr>
+            <tr>
+                <td><label for="MSA">MSA:</label></td>
+                <td><input type="text" id="MSA" name="MSA" required></td>
+            </tr>
+            <tr>
+                <td><label for="MIP">MIP:</label></td>
+                <td><input type="text" id="MIP" name="MIP" required></td>
+            </tr>
+            <tr>
+                <td><label for="Units">Units:</label></td>
+                <td>
+                    <select id="Units" name="Units" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">5</option>
+                    </select>
+                </td>
+            </tr>
+	    <tr>
+                <td><label for="Occupancy">Occupancy:</label></td>
+                <td>
+                    <select id="Occupancy" name="Occupancy" required>
+                        <option value="I">I</option>
+                        <option value="O">O</option>
+			<option value="S">S</option>
+		    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="OCLTV">OCLTV:</label></td>
+                <td><input type="text" id="OCLTV" name="OCLTV" required></td>
+            </tr>
+            <tr>
+                <td><label for="DTI">DTI:</label></td>
+                <td><input type="text" id="DTI" name="DTI" required></td>
+            </tr>
+            <tr>
+                <td><label for="OrigUPB">OrigUPB:</label></td>
+                <td><input type="text" id="OrigUPB" name="OrigUPB" required></td>
+            </tr>
+            <tr>
+                <td><label for="LTV">LTV:</label></td>
+                <td><input type="text" id="LTV" name="LTV" required></td>
+            </tr>
+            <tr>
+                <td><label for="OrigInterestRate">OrigInterestRate:</label></td>
+                <td><input type="text" id="OrigInterestRate" name="OrigInterestRate" required></td>
+            </tr>
+            <tr>
+                <td><label for="Channel">Channel:</label></td>
+                <td>
+                    <select id="Channel" name="Channel" required>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+			<option value="R">R</option>
+			<option value="T">T</option>
+		    </select>
+                </td>
+            </tr>
+	    <tr>
+                <td><label for="PPM">PPM:</label></td>
+	        <td>
+                    <select id="PPM" name="PPM" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td><label for="PropertyState">PropertyState:</label></td>
+                <td><input type="text" id="PropertyState" name="PropertyState" required></td>
+            </tr
+	    <tr>
+                <td><label for="PropertyType">PropertyType:</label></td>
+                <td>
+                    <select id="PropertyType" name="PropertyType" required>
+                        <option value="CO">CO</option>
+                        <option value="CP">CP</option>
+			<option value="LH">LH</option>
+			<option value="MH">MH</option>
+			<option value="PU">PU</option>
+			<option value="SF">SF</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="PostalCode">PostalCode:</label></td>
+                <td><input type="text" id="PostalCode" name="PostalCode" required></td>
+            </tr>
+	    <tr>
+                <td><label for="LoanSeqNum">LoanSeqNum:</label></td>
+                <td><input type="text" id="LoanSeqNum" name="LoanSeqNum" required></td>
+            </tr>
+            <tr>
+                <td><label for="LoanPurpose">LoanPurpose:</label></td>
+                <td>
+                    <select id="LoanPurpose" name="LoanPurpose" required>
+                        <option value="1">N</option>
+                        <option value="0">C</option>
+			<option value="2">P</option>
+		    </select>
+                </td>
+            </tr>
+
+	    <tr>
+                <td><label for="OrigLoanTerm">Orig Loan Term:</label></td>
+                <td><input type="text" id="OrigLoanTerm" name="OrigLoanTerm" required></td>
+            </tr>
+            <tr>
+                <td><label for="NumBorrowers">NumBorrowers:</label></td>
+                <td>
+                    <select id="NumBorrowers" name="NumBorrowers" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+		    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="EverDelinquent">Ever Delinquent:</label></td>
+                <td>
+                    <select id="EverDelinquent" name="EverDelinquent" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+		    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="MonthsDelinquent">Months Delinquent:</label></td>
+                <td><input type="text" id="MonthsDelinquent" name="MonthsDelinquent" required></td>
+            </tr>
+            <tr>
+                <td><label for="MonthsInRepayment">Months In Repayment:</label></td>
+                <td><input type="text" id="MonthsInRepayment" name="MonthsInRepayment" required></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
+
