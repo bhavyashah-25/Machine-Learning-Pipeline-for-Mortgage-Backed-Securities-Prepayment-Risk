@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PrePayment Risk Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8ad6db;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; 
+            margin: 0; 
+        }
+
+        h1 {
+            text-align: center;
+            color: #336699;
+	    font-size: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 15%;
+            margin: 200px auto;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        p {
+            color: #336699;
+            font-size: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Style to change the color of prediction message */
+        .prediction-message-eligible {
+            color: green;
+        }
+
+        .prediction-message-not-eligible {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>PrePayment Risk Prediction Result</h1>
+    <p class="{% if prediction_message == 'You are eligible for the loan' %}prediction-message-eligible{% else %}prediction-message-not-eligible{% endif %}">
+        {{ prediction_message }}
+    </p>
+    {% if prediction is not none %}
+    <p>The predicted PrePayment Risk probability is {{ prediction }}  %</p>
+    {% endif %}
+    <p>Thank you for using our PrePayment Risk Prediction!</p>
+</body>
+</html>
